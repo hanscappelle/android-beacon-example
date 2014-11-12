@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="define_int_altbeacon"></string>
+    <!-- Author section -->
+    <string name="library_altbeacon_author">AltBeacon</string>
+    <string name="library_altbeacon_authorWebsite">https://github.com/AltBeacon</string>
+    <!-- Library section -->
+    <string name="library_altbeacon_libraryName">AltBeacon</string>
+    <string name="library_altbeacon_libraryDescription">Allows Android apps to interact with BLE beacons</string>
+    <string name="library_altbeacon_libraryWebsite"></string>
+    <string name="library_altbeacon_libraryVersion">2.0</string>
+    <!-- OpenSource section -->
+    <string name="library_altbeacon_isOpenSource">true</string>
+    <string name="library_altbeacon_repositoryLink">https://github.com/AltBeacon/android-beacon-library</string>
+    <!-- ClassPath for autoDetect section -->
+    <string name="library_altbeacon_classPath"></string>
+    <!-- License section -->
+    <string name="library_altbeacon_licenseId">apache_2_0</string>
+    <!-- Custom variables section -->
+</resources>

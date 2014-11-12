@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="be.hcpl.android.beaconexample">
+
+    <!-- we need these for BLE -->
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- Note:  the singleInstance below is important to keep two copies of your activity
+            from getting launched on automatic startup sure only needed if we use the activity
+            launch on region bootstrap
+         -->
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- use this broadcastreceiver for handling the notifications so we can intercept then when
+            the ranging fragment is up front -->
+        <receiver android:name=".beacon.BeaconNotificationReceiver">
+            <intent-filter>
+                <action android:name="be.hcpl.android.beaconexample.NOTIFY_FOR_BEACON" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+
+</manifest>

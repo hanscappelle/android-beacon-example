@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_background" />
+
+    <EditText
+        android:id="@+id/edit_scantime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_info"
+        android:hint="@string/hint_scan_time_in_ms"
+        android:inputType="number"
+        />
+
+    <EditText
+        android:id="@+id/edit_inbetweentime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_scantime"
+        android:hint="@string/hint_in_between_time_in_ms"
+        android:inputType="number"
+        />
+
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_inbetweentime"
+        android:layout_alignParentRight="true"
+        android:text="@string/label_apply"
+        />
+
+</RelativeLayout>

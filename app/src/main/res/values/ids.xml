@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">172866836805</string>
+
+    <string name="leaderboard">CgkIxbKq_YMFEAIQDQ</string>
+
+    <string name="achievement_rookie">CgkIxbKq_YMFEAIQBQ</string> <!-- on first quest -->
+    <string name="achievement_scout">CgkIxbKq_YMFEAIQBw</string> <!-- first reply -->
+    <string name="achievement_seeker">CgkIxbKq_YMFEAIQBg</string> <!-- 5 quests created -->
+    <string name="achievement_guide">CgkIxbKq_YMFEAIQCA</string> <!-- 10 replies -->
+    <string name="achievement_collaborator">CgkIxbKq_YMFEAIQAg</string> <!-- joined a quest -->
+    <string name="achievement_follower">CgkIxbKq_YMFEAIQBA</string> <!-- joined 5 replies -->
+    <string name="achievement_reporter">CgkIxbKq_YMFEAIQCQ</string> <!-- reported something -->
+
+</resources>

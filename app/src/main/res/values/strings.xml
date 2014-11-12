@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Beacon Example</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="info_about">&lt;b>${app_name}&lt;/b>&lt;p/>This Android example demonstrates how to discover beacons in both foreground and background applications.&lt;p/>version ${app_version}&lt;p/>This app is a realisation of&lt;p/>&lt;b>HCPL BVBA&lt;/b>&lt;p/>For more information visit http://androidco.de</string>
+    <string name="title_about">About</string>
+    <string name="empty_menu_item">### TODO ###</string>
+    <string name="app_title">Beacon Example</string>
+    <string name="label_libraries">libraries</string>
+    <string name="title_bound_example">Bound example</string>
+    <string name="title_background_example">Background example</string>
+
+    <!-- beacon specific information -->
+    <string name="ble_uuid">D57092AC-DFAA-446C-8EF3-C81AA22815B5</string>
+    <string name="region_background">be.hcpl.android.ble_background_region</string>
+
+    <string name="notification_title">a beacon found</string>
+    <string name="notification_description">looks like we found a beacon here</string>
+    <string name="info_background">Background scanning is enabled on running the app</string>
+    <string name="ranging_info">This fragment contains the ranging information</string>
+    <string name="hint_scan_time_in_ms">scan time in ms</string>
+    <string name="hint_in_between_time_in_ms">in between time in ms</string>
+    <string name="confirm">Confirm</string>
+    <string name="no_beacons">no beacons found</string>
+    <string name="label_apply">Apply</string>
+
+</resources>

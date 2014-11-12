@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- minimal colorset in use -->
+
+    <color name="primary_color">#E91E63</color>
+    <color name="primary_color_dark">#C2185B</color>
+    <color name="color_accent">#F8BBD0</color>
+
+    <color name="primary_text">@color/gray_60</color>
+    <color name="primary_text_alternative">@color/gray_55</color>
+    <color name="primary_text_inverse">@color/gray_00</color>
+
+    <color name="primary_background">@color/gray_00</color>
+    <color name="primary_background_inverse">@color/gray_60</color>
+
+    <color name="primary_divider">@color/gray_20</color>
+
+    <!-- b/w range -->
+    <color name="white">#FFFFFF</color>
+    <color name="gray_00">#f7f7f7</color>
+    <color name="gray_10">#e8e8e8</color>
+    <color name="gray_15">#e5e5e5</color>
+    <color name="gray_20">#dedede</color>
+    <color name="gray_30">#d5d5d5</color>
+    <color name="gray_35">#cecece</color>
+    <color name="gray_40">#d8d8d8</color>
+    <color name="gray_50">#858585</color>
+    <color name="gray_55">#777777</color>
+    <color name="gray_60">#333333</color>
+    <color name="black">#000000</color>
+
+    <!-- android accent colors -->
+    <color name="android_red_light">#FF4444</color>
+    <color name="android_red_dark">#CC0000</color>
+    <color name="android_green_light">#99CC00</color>
+    <color name="android_green_dark">#669900</color>
+    <color name="android_purple_light">#AA66CC</color>
+    <color name="android_purple_dark">#9933CC</color>
+    <color name="android_blue_light">#33B5E5</color>
+    <color name="android_blue_dark">#0099CC</color>
+    <color name="android_orange_light">#FFBB33</color>
+    <color name="android_orange_dark">#FF8800</color>
+
+    <color name="transparent_black">#80000000</color>
+
+    <!-- color palette
+
+Pink
+500 #E91E63
+50#FCE4EC
+100#F8BBD0
+200#F48FB1
+300#F06292
+400#EC407A
+500#E91E63
+600#D81B60
+700#C2185B
+800#AD1457
+900#880E4F
+A100#FF80AB
+A200#FF4081
+A400#F50057
+A700#C51162
+
+
+    -->
+
+</resources>

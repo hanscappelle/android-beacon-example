@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="POINTS_CREATE_QUEST">100</integer>
+    <integer name="POINTS_CREATE_REPLY">50</integer>
+    <integer name="POINTS_JOIN_QUEST">25</integer>
+    <integer name="POINTS_JOIN_REPLY">25</integer>
+    <integer name="POINTS_REPORT_ANY">50</integer>
+
+</resources>

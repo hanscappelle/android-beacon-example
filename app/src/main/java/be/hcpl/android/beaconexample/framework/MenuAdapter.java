@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import be.hcpl.android.beaconexample.R;
@@ -16,18 +18,33 @@ import be.hcpl.android.beaconexample.R;
  * adapter for menu items. This way we can have translated labels in the menu for each fragment
  * <p/>
  * Created by hcpl on 15/07/14.
- * TODO convert to baseAdapter instead
  */
-public class MenuAdapter extends ArrayAdapter<TemplateFragment> {
+public class MenuAdapter extends BaseAdapter {
 
-    private List<TemplateFragment> mFragments;
+    private List<TemplateFragment> mFragments = new ArrayList<TemplateFragment>();
 
     private Context mContext;
 
     public MenuAdapter(Context context, List<TemplateFragment> fragments) {
-        super(context, R.layout.listitem_menu, fragments);
-        mFragments = fragments;
+        //super(context, R.layout.listitem_menu, fragments);
+        if( fragments != null )
+            mFragments = fragments;
         mContext = context;
+    }
+
+    @Override
+    public int getCount() {
+        return mFragments.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return mFragments.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
     }
 
     @Override

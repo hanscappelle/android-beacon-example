@@ -2,14 +2,19 @@ package be.hcpl.android.beaconexample.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.altbeacon.beacon.BeaconManager;
 
@@ -53,8 +58,7 @@ public class BackgroundExampleFragment extends TemplateFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // FIXME options menu failing on me
-        // setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
 
         // always get a single instance of the beacon manager
         beaconManager = BeaconManager.getInstanceForApplication(getActivity());
@@ -87,29 +91,29 @@ public class BackgroundExampleFragment extends TemplateFragment {
         scanTime = (EditText) view.findViewById(R.id.edit_scantime);
         inBetweenTime = (EditText) view.findViewById(R.id.edit_inbetweentime);
 
-        view.findViewById(R.id.btn_apply).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    long scan = Long.parseLong(inBetweenTime.getText().toString());
-                    long between = Long.parseLong(scanTime.getText().toString());
-
-                    // store prefs
-                    prefs.edit().putString("scantime", String.valueOf(scan)).putString("betweentime", String.valueOf(between)).commit();
-
-                    // these intervals are only applied to service running in background mode
-                    beaconManager.setBackgroundBetweenScanPeriod(scan);
-                    beaconManager.setBackgroundScanPeriod(between);
-                    beaconManager.updateScanPeriods();
-                } catch (RemoteException e) {
-                    Log.e(BackgroundExampleFragment.class.getSimpleName(), "failed to update background scanning intervals", e);
-                }
-            }
-        });
-
     }
 
-    /*
+    private void handleNewValues(){
+        try {
+            long scan = Long.parseLong(inBetweenTime.getText().toString());
+            long between = Long.parseLong(scanTime.getText().toString());
+
+            // store prefs
+            prefs.edit().putString("scantime", String.valueOf(scan)).putString("betweentime", String.valueOf(between)).commit();
+
+            // these intervals are only applied to service running in background mode
+            beaconManager.setBackgroundBetweenScanPeriod(scan);
+            beaconManager.setBackgroundScanPeriod(between);
+            beaconManager.updateScanPeriods();
+
+            Toast.makeText(getActivity(), R.string.msg_values_updated, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), R.string.err_input_incomplete, Toast.LENGTH_SHORT).show();
+            Log.e(BackgroundExampleFragment.class.getSimpleName(), "failed to update background scanning intervals", e);
+        }
+    }
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.settings, menu);
@@ -118,20 +122,15 @@ public class BackgroundExampleFragment extends TemplateFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if( item.getItemId() == R.id.action_confirm ){
+        switch(item.getItemId()){
+        case R.id.action_confirm:
             // update settings here from input
-            try {
-                beaconManager.setBackgroundBetweenScanPeriod(Long.parseLong(inBetweenTime.getText().toString()));
-                beaconManager.setBackgroundScanPeriod(Long.parseLong(scanTime.getText().toString()));
-                beaconManager.updateScanPeriods();
-            } catch (RemoteException e) {
-                Log.e(BackgroundExampleFragment.class.getSimpleName(), "failed to update background scanning intervals", e);
-            }
+            handleNewValues();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    */
+
 
     @Override
     public int getTitleResourceId() {

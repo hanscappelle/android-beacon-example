@@ -1,9 +1,12 @@
 package be.hcpl.android.beaconexample.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -26,6 +29,7 @@ import org.altbeacon.beacon.Region;
 import java.util.Collection;
 
 import be.hcpl.android.beaconexample.BuildConfig;
+import be.hcpl.android.beaconexample.MainActivity;
 import be.hcpl.android.beaconexample.R;
 import be.hcpl.android.beaconexample.beacon.BeaconNotificationReceiver;
 import be.hcpl.android.beaconexample.framework.TemplateFragment;
@@ -38,6 +42,11 @@ import be.hcpl.android.beaconexample.framework.TemplateFragment;
  * Created by hanscappelle on 23/10/14.
  */
 public class BoundExampleFragment extends TemplateFragment implements BeaconConsumer {
+
+    /**
+     * to get back after BT enabled
+     */
+    private static final int REQUEST_ENABLE_BT = 110;
 
     /**
      * bm is a singleton
@@ -72,6 +81,10 @@ public class BoundExampleFragment extends TemplateFragment implements BeaconCons
 
         beaconManager = BeaconManager.getInstanceForApplication(getActivity());
         beaconManager.bind(this);
+
+        if (!BuildConfig.DEBUG) {
+            verifyBluetooth();
+        }
     }
 
     @Override
@@ -173,6 +186,68 @@ public class BoundExampleFragment extends TemplateFragment implements BeaconCons
     public boolean bindService(Intent intent, ServiceConnection serviceConnection, int i) {
         return getActivity().bindService(intent, serviceConnection, i);
     }
+
+    /**
+     * check for bluetooth enabled or not
+     */
+    private void verifyBluetooth() {
+
+        try {
+            if (!beaconManager.checkAvailability()) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle(getString(R.string.title_bluetooth_not_enabled));
+                builder.setMessage(getString(R.string.enable_bluetooth));
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                    }
+                });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        //finish();
+                    }
+                });
+                builder.setCancelable(false);
+                builder.show();
+            }
+        } catch (RuntimeException e) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            builder.setTitle(getString(R.string.title_bluetooth_le_not_available));
+            builder.setMessage(getString(R.string.sorry_bluetooth_not_supported));
+            builder.setPositiveButton(android.R.string.ok, null);
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    //finish();
+                }
+            });
+            builder.show();
+
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ENABLE_BT) {
+            if (resultCode == Activity.RESULT_OK) {
+                verifyBluetooth();
+            } else {
+                final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
 
     @Override
     public int getTitleResourceId() {

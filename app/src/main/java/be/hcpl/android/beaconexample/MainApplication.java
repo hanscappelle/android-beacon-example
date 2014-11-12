@@ -41,7 +41,7 @@ public class MainApplication extends Application implements BootstrapNotifier, B
      * as soon as the app is no longer in front of the user. Caution! this also causes the service
      * to go out of background mode as soon as the app is in front again.
      */
-    private BackgroundPowerSaver backgroundPowerSaver;
+    //private BackgroundPowerSaver backgroundPowerSaver;
 
     /**
      * a single beacon manager for the app
@@ -73,6 +73,14 @@ public class MainApplication extends Application implements BootstrapNotifier, B
 
         // debug option depends on build config
         beaconManager.setDebug(BuildConfig.DEBUG);
+        // also in debug we use the beaconsimulator
+        if(BuildConfig.DEBUG) {
+
+            TimedBeaconSimulator simulator = new TimedBeaconSimulator(getApplicationContext());
+            simulator.createTimedSimulatedBeacons();
+            beaconManager.setBeaconSimulator(simulator);
+
+        }
 
         // we need to bind to update settings or toggle background mode
         // always run in background mode settings application object create

@@ -16,15 +16,21 @@ Note that bluetooth low energy is only supported from Android API level 18 (4.3)
 * ordered broadcast receiver: http://commonsware.com/blog/2010/08/11/activity-notification-ordered-broadcast.html
 
 
-# TODO sometime
+# TODO
 
-* add a beacon simulator for testing on an emulator
-* test if bluetooth is enabled
-* use action menu instead of button for form submit
-* convert menu adapter to baseadapter
+* export framework to shared lib instead
+* (TODO) test if bluetooth is enabled
 
 
 # Version History
+
+## 0.2.0 (upcoming)
+
+* add a beacon simulator for testing on an emulator, will be added in debug mode
+* convert menu adapter to baseadapter
+* use action menu instead of button for form submit
+* fixed error on non numeric input
+
 
 ## 0.1.0
 

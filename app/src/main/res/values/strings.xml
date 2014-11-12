@@ -26,5 +26,11 @@
     <string name="confirm">Confirm</string>
     <string name="no_beacons">no beacons found</string>
     <string name="label_apply">Apply</string>
+    <string name="title_bluetooth_not_enabled">Bluetooth not enabled</string>
+    <string name="enable_bluetooth">Enable</string>
+    <string name="title_bluetooth_le_not_available">Bluetooth LE not available</string>
+    <string name="sorry_bluetooth_not_supported">Bluetooth LE not supported</string>
+    <string name="err_input_incomplete">Input incomplete</string>
+    <string name="msg_values_updated">Service interval values updated</string>
 
 </resources>
